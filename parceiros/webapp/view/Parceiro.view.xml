@@ -1,0 +1,24 @@
+<mvc:View xmlns:semantic="sap.f.semantic" controllerName="zapp.parceiros.controller.Parceiro"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:f="sap.f">
+    <Page>
+
+        <semantic:SemanticPage >
+            <semantic:titleHeading>
+                <Title
+                    level="Auto"
+                    text="Parceiro: {CodigoParceiro}"
+                    textAlign="Initial"
+                    titleStyle="Auto"
+                    width=""
+                    wrapping="false"
+                    wrappingType="Normal"
+                />
+            </semantic:titleHeading>
+            <semantic:titleSnappedHeading></semantic:titleSnappedHeading>
+        </semantic:SemanticPage>
+
+        <!-- <Text text="{Nome1}"></Text> -->
+    </Page>
+</mvc:View>

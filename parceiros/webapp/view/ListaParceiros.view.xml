@@ -1,0 +1,43 @@
+<mvc:View controllerName="zapp.parceiros.controller.ListaParceiros"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:f="sap.f">
+    <Page id="page">
+        
+        <Table 
+            id="idTable" 
+            items="{/ParceirosSet}"
+            growing="true"
+            growingScrollToLoad="true">
+
+            <headerToolbar>
+                <OverflowToolbar>
+                    <Title text="{i18n>title}"></Title>
+                </OverflowToolbar>
+            </headerToolbar>
+
+            <columns>
+                <Column>
+                    <Text text="Identificação"></Text>
+                </Column>
+                <Column>
+                    <Text text="Tipo"></Text>
+                </Column>
+            </columns>
+
+            <items>
+                <ColumnListItem type="Navigation" press="aoSelecionarParceiro">
+                    <ObjectIdentifier 
+                        title="{CodigoParceiro}"
+                        text="{Nome1} {Nome2}"
+                    />
+
+                    <Text 
+                        text="{Tipo}"
+                    />
+                </ColumnListItem>
+            </items>
+        </Table>
+
+    </Page>
+</mvc:View>
