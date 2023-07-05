@@ -7,7 +7,13 @@
     xmlns="sap.m"
     xmlns:f="sap.f">
     <Page showHeader="true">
-        <semantic:SemanticPage >
+        <semantic:SemanticPage 
+            showFooter="{editavel>/habilitado}">
+
+            <semantic:titleMainAction>
+                <semantic:TitleMainAction text="Edit" visible="{visibilidade>/botaoEdit}" press="onEditButton"/>
+            </semantic:titleMainAction>
+
             <semantic:titleHeading>
                 <Title
                     level="Auto"
@@ -49,16 +55,16 @@
                         singleContainerFullSize="false" >
                         <form:content>
                             <Label text="Nome 1" />
-                            <Input value="{Nome1}" />
+                            <Input value="{Nome1}" editable="{editavel>/habilitado}"/>
                             
                             <Label text="Nome 2" />
-                            <Input value="{Nome2}"></Input>
+                            <Input value="{Nome2}" editable="{editavel>/habilitado}"></Input>
 
                             <Label text="Termo de Pesquisa 1" />
-                            <Input value="{TermoDePesquisa1}"></Input>
+                            <Input value="{TermoDePesquisa1}" editable="{editavel>/habilitado}"/>
 
                             <Label text="Termo de Pesquisa 2" />
-                            <Input value="{TermoDePesquisa2}"></Input>
+                            <Input value="{TermoDePesquisa2}" editable="{editavel>/habilitado}"/>
                             
                         </form:content>
                     </form:SimpleForm>
@@ -83,30 +89,38 @@
                         <form:content>
                             
                             <Label text="Rua" />
-                            <Input value="{Rua}" />
+                            <Input value="{Rua}" editable="{editavel>/habilitado}"/>
                             
                             <Label text="Número da Casa" />
-                            <Input value="{NumeroCasa}"></Input>
+                            <Input value="{NumeroCasa}" editable="{editavel>/habilitado}"/>
 
                             <Label text="Bairro" />
-                            <Input value="{Bairro}"></Input>
+                            <Input value="{Bairro}" editable="{editavel>/habilitado}"/>
 
                             <Label text="Cidade" />
-                            <Input value="{Cidade}"></Input>
+                            <Input value="{Cidade}" editable="{editavel>/habilitado}"/>
 
                             <Label text="Estado" />
-                            <Input value="{Estado}"></Input>
+                            <Input value="{Estado}" editable="{editavel>/habilitado}"/>
 
                             <Label text="País" />
-                            <Input value="{Pais}"></Input>
+                            <Input value="{Pais}" editable="{editavel>/habilitado}"/>
 
                             <Label text="CEP" />
-                            <Input value="{Cep}"></Input>
+                            <Input value="{Cep}" editable="{editavel>/habilitado}"/>
                             
                         </form:content>
                     </form:SimpleForm>
                 </layout:VerticalLayout>
             </semantic:content>
+
+            <semantic:footerMainAction>
+                <semantic:FooterMainAction text="Save" press="onSave"/>
+            </semantic:footerMainAction>
+
+            <semantic:footerCustomActions>
+                <Button text="Cancel" press="onCancelButton"/>
+            </semantic:footerCustomActions>
         </semantic:SemanticPage>
         <!-- <Text text="{Nome1}"></Text> -->
     </Page>
