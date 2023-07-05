@@ -1,9 +1,12 @@
-<mvc:View xmlns:layout="sap.ui.layout" xmlns:semantic="sap.f.semantic" controllerName="zapp.parceiros.controller.Parceiro"
+<mvc:View xmlns:core="sap.ui.core" 
+    xmlns:form="sap.ui.layout.form" 
+    xmlns:layout="sap.ui.layout" 
+    xmlns:semantic="sap.f.semantic" 
+    controllerName="zapp.parceiros.controller.Parceiro"
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
     xmlns="sap.m"
     xmlns:f="sap.f">
-    <Page>
-
+    <Page showHeader="true">
         <semantic:SemanticPage >
             <semantic:titleHeading>
                 <Title
@@ -23,8 +26,88 @@
                     <ObjectAttribute title="ID Parceiro" text="{CodigoParceiro}"></ObjectAttribute>
                 </layout:HorizontalLayout>
             </semantic:headerContent>
-        </semantic:SemanticPage>
 
+            <semantic:content>
+                <layout:VerticalLayout allowWrapping="true">
+                    
+                    <form:SimpleForm id="SimpleFormDadosUsuario"
+                        editable="true"
+                        layout="ResponsiveGridLayout"
+                        title="Dados Usuário"
+                        labelSpanXL="3"
+                        labelSpanL="3"
+                        labelSpanM="3"
+                        labelSpanS="12"
+                        adjustLabelSpan="false"
+                        emptySpanXL="4"
+                        emptySpanL="4"
+                        emptySpanM="4"
+                        emptySpanS="0"
+                        columnsXL="1"
+                        columnsL="1"
+                        columnsM="1"
+                        singleContainerFullSize="false" >
+                        <form:content>
+                            <Label text="Nome 1" />
+                            <Input value="{Nome1}" />
+                            
+                            <Label text="Nome 2" />
+                            <Input value="{Nome2}"></Input>
+
+                            <Label text="Termo de Pesquisa 1" />
+                            <Input value="{TermoDePesquisa1}"></Input>
+
+                            <Label text="Termo de Pesquisa 2" />
+                            <Input value="{TermoDePesquisa2}"></Input>
+                            
+                        </form:content>
+                    </form:SimpleForm>
+
+                    <form:SimpleForm id="SimpleFormEndereco"
+                        editable="true"
+                        layout="ResponsiveGridLayout"
+                        title="Endereço"
+                        labelSpanXL="3"
+                        labelSpanL="3"
+                        labelSpanM="3"
+                        labelSpanS="12"
+                        adjustLabelSpan="false"
+                        emptySpanXL="4"
+                        emptySpanL="4"
+                        emptySpanM="4"
+                        emptySpanS="0"
+                        columnsXL="1"
+                        columnsL="1"
+                        columnsM="1"
+                        singleContainerFullSize="false" >
+                        <form:content>
+                            
+                            <Label text="Rua" />
+                            <Input value="{Rua}" />
+                            
+                            <Label text="Número da Casa" />
+                            <Input value="{NumeroCasa}"></Input>
+
+                            <Label text="Bairro" />
+                            <Input value="{Bairro}"></Input>
+
+                            <Label text="Cidade" />
+                            <Input value="{Cidade}"></Input>
+
+                            <Label text="Estado" />
+                            <Input value="{Estado}"></Input>
+
+                            <Label text="País" />
+                            <Input value="{Pais}"></Input>
+
+                            <Label text="CEP" />
+                            <Input value="{Cep}"></Input>
+                            
+                        </form:content>
+                    </form:SimpleForm>
+                </layout:VerticalLayout>
+            </semantic:content>
+        </semantic:SemanticPage>
         <!-- <Text text="{Nome1}"></Text> -->
     </Page>
 </mvc:View>
