@@ -7,6 +7,9 @@ sap.ui.define(
   
       return BaseController.extend("zapp.parceiros.controller.App", {
         onInit() {
+          let oRoteador = this.getOwnerComponent().getRouter();
+
+          oRoteador.navTo("RouteListaParceiros", {})
         }
       });
     }

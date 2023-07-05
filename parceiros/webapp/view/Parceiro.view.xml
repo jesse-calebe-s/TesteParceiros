@@ -1,4 +1,4 @@
-<mvc:View xmlns:semantic="sap.f.semantic" controllerName="zapp.parceiros.controller.Parceiro"
+<mvc:View xmlns:layout="sap.ui.layout" xmlns:semantic="sap.f.semantic" controllerName="zapp.parceiros.controller.Parceiro"
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
     xmlns="sap.m"
     xmlns:f="sap.f">
@@ -8,7 +8,7 @@
             <semantic:titleHeading>
                 <Title
                     level="Auto"
-                    text="Parceiro {CodigoParceiro}"
+                    text="{Nome1} {Nome2}"
                     textAlign="Initial"
                     titleStyle="Auto"
                     width=""
@@ -16,7 +16,13 @@
                     wrappingType="Normal"
                 />
             </semantic:titleHeading>
-            <semantic:titleSnappedHeading></semantic:titleSnappedHeading>
+            
+            <semantic:headerContent>
+                <layout:HorizontalLayout allowWrapping="true">
+                    <ObjectAttribute title="Tipo de Parceiro" text="{Tipo}"/>
+                    <ObjectAttribute title="ID Parceiro" text="{CodigoParceiro}"></ObjectAttribute>
+                </layout:HorizontalLayout>
+            </semantic:headerContent>
         </semantic:SemanticPage>
 
         <!-- <Text text="{Nome1}"></Text> -->

@@ -9,14 +9,13 @@
     "sapui5"
   ],
   "main": "webapp/index.html",
-  "dependencies": {},
   "devDependencies": {
-    "@ui5/cli": "^2.14.1",
-    "@sap/ux-ui5-tooling": "1",
-    "eslint": "7.32.0",
+    "@sap-ux/ui5-middleware-fe-mockserver": "2",
     "@sap/eslint-plugin-ui5-jsdocs": "2.0.5",
+    "@sap/ux-ui5-tooling": "1",
     "@sapui5/ts-types": "~1.84.33",
-    "@sap-ux/ui5-middleware-fe-mockserver": "2"
+    "@ui5/cli": "^2.14.19",
+    "eslint": "7.32.0"
   },
   "scripts": {
     "start": "fiori run --open \"test/flpSandbox.html?sap-client=140&sap-ui-xx-viewCache=false#zappparceiros-display\"",
