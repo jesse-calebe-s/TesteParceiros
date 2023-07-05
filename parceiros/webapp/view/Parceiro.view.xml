@@ -8,7 +8,7 @@
             <semantic:titleHeading>
                 <Title
                     level="Auto"
-                    text="Parceiro: {CodigoParceiro}"
+                    text="Parceiro {CodigoParceiro}"
                     textAlign="Initial"
                     titleStyle="Auto"
                     width=""
