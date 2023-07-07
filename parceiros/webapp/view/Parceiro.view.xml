@@ -115,7 +115,7 @@
             </semantic:content>
 
             <semantic:footerMainAction>
-                <semantic:FooterMainAction text="Save" press="onSave"/>
+                <semantic:FooterMainAction text="Save" press="onSaveButton"/>
             </semantic:footerMainAction>
 
             <semantic:footerCustomActions>

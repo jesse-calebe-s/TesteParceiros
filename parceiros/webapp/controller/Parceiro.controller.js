@@ -1,11 +1,14 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
-    "sap/ui/model/json/JSONModel"
+    "sap/ui/model/json/JSONModel",
+    "sap/m/MessageToast"
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (Controller, JSONModel) {
+    function (Controller,
+	JSONModel,
+	MessageToast) {
         "use strict";
 
         return Controller.extend("zapp.parceiros.controller.Parceiro", {
@@ -25,6 +28,9 @@ sap.ui.define([
                 oModel.setProperty("/botaoEdit", true);
                 this.getView().setModel(oModel, "visibilidade");
 
+                //habilitar alterações pelo usuário
+                this.getOwnerComponent().getModel().setDefaultBindingMode('TwoWay');
+
             },
             rotaDetalhe: function (oEvent){
                 let sCodigoParceiro = oEvent.getParameter("arguments").CodigoParceiro;
@@ -42,6 +48,40 @@ sap.ui.define([
             },
             onCancelButton: function (oEvent){
                 this._ConfiguraEdicao(false);
+            },
+            onSaveButton: function (oEvent){
+                let sCaminho = this.getView().getBindingContext().getPath();
+
+                let oModel = this.getOwnerComponent().getModel();
+
+                let oDadosTela = this.getView().getBindingContext().getObject();
+
+                let oInformacoes = {
+                    Tipo: oDadosTela.Tipo,
+                    Nome1: oDadosTela.Nome1,
+                    Nome2: oDadosTela.Nome2,
+                    TermoDePesquisa1: oDadosTela.TermoDePesquisa1,
+                    TermoDePesquisa2: oDadosTela.TermoDePesquisa2,
+                    Rua: oDadosTela.Rua,
+                    NumeroCasa: oDadosTela.NumeroCasa,
+                    Bairro: oDadosTela.Bairro,
+                    Cidade: oDadosTela.Cidade,
+                    Estado: oDadosTela.Estado,
+                    Pais: oDadosTela.Pais,
+                    Cep: oDadosTela.Cep
+                };
+
+                oModel.setHeaders({'X-Requested-With': 'X'});
+
+                oModel.update(sCaminho, oInformacoes, {
+                    success: () => {
+                        this._ConfiguraEdicao(false);
+                        MessageToast.show('Parceiro atualizado.');
+                    },
+                    error: (oError) => {
+                        MessageToast.show(JSON.parse(oError.responseText).error.innererror.errordetails[0].message);
+                    }
+                });
             },
             _ConfiguraEdicao: function(bHabilitaEdicao){
                 let oModelEditavel = this.getView().getModel("editavel");
