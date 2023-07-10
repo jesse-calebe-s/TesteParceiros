@@ -54,6 +54,12 @@
                         columnsM="1"
                         singleContainerFullSize="false" >
                         <form:content>
+                            <Label text="Código do Parceiro" />
+                            <Input value="{CodigoParceiro}" visible="{criacao>/visibilidade}" editable="{editavel>/habilitado}"/>
+                            
+                            <Label text="Tipo parceiro" />
+                            <Input value="{Tipo}" visible="{criacao>/visibilidade}" editable="{editavel>/habilitado}"/>
+                            
                             <Label text="Nome 1" />
                             <Input value="{Nome1}" editable="{editavel>/habilitado}"/>
                             

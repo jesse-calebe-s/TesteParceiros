@@ -28,6 +28,10 @@ sap.ui.define([
                 oModel.setProperty("/botaoEdit", true);
                 this.getView().setModel(oModel, "visibilidade");
 
+                oModel = new JSONModel();
+                oModel.setProperty("/visibilidade", false);
+                this.getView().setModel(oModel, "criacao");
+
                 //habilitar alterações pelo usuário
                 this.getOwnerComponent().getModel().setDefaultBindingMode('TwoWay');
 
@@ -42,12 +46,32 @@ sap.ui.define([
                 });
                 
                 this.getView().bindElement(sCaminho);
+
+                let oModelCriacao = this.getView().getModel("criacao");
+
+                if (sCodigoParceiro === 'novo_parc') {
+                    oModelCriacao.setProperty("/visibilidade", true);
+                    this._ConfiguraEdicao(true);
+                }else{
+                    this._ConfiguraEdicao(false);
+                    oModelCriacao.setProperty("/visibilidade", false)
+                }
             },
             onEditButton: function (oEvent) {
                 this._ConfiguraEdicao(true);
             },
             onCancelButton: function (oEvent){
+                this.getView().getModel().resetChanges()
+
                 this._ConfiguraEdicao(false);
+
+                let sCaminho = this.getView().getBindingContext().getPath();
+
+                if (sCaminho === "/ParceirosSet('novo_parc')") {
+                    let oRoteador = this.getOwnerComponent().getRouter();
+
+                    oRoteador.navTo("RouteListaParceiros", {});
+                };
             },
             onSaveButton: function (oEvent){
                 let sCaminho = this.getView().getBindingContext().getPath();
@@ -73,15 +97,34 @@ sap.ui.define([
 
                 oModel.setHeaders({'X-Requested-With': 'X'});
 
-                oModel.update(sCaminho, oInformacoes, {
-                    success: () => {
-                        this._ConfiguraEdicao(false);
-                        MessageToast.show('Parceiro atualizado.');
-                    },
-                    error: (oError) => {
-                        MessageToast.show(JSON.parse(oError.responseText).error.innererror.errordetails[0].message);
-                    }
-                });
+                if (sCaminho === "/ParceirosSet('novo_parc')") {
+                    oInformacoes.CodigoParceiro = oDadosTela.CodigoParceiro;
+                    
+                    oModel.create("/ParceirosSet", oInformacoes, {
+                        success: () => {
+                            this._ConfiguraEdicao(false);
+                            
+                            let oRoteador = this.getOwnerComponent().getRouter();
+
+                            oRoteador.navTo("RouteListaParceiros", {});
+                            
+                            MessageToast.show('Parceiro criado.');
+                        },
+                        error: (oError) => {
+                            MessageToast.show(JSON.parse(oError.responseText).error.innererror.errordetails[0].message);
+                        }
+                    })
+                }else{
+                    oModel.update(sCaminho, oInformacoes, {
+                        success: () => {
+                            this._ConfiguraEdicao(false);
+                            MessageToast.show('Parceiro atualizado.');
+                        },
+                        error: (oError) => {
+                            MessageToast.show(JSON.parse(oError.responseText).error.innererror.errordetails[0].message);
+                        }
+                    });
+                }
             },
             _ConfiguraEdicao: function(bHabilitaEdicao){
                 let oModelEditavel = this.getView().getModel("editavel");

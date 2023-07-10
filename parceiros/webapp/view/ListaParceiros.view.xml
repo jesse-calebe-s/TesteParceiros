@@ -4,15 +4,13 @@
     xmlns:f="sap.f">
     <Page id="page">
         
-        <Table 
-            id="idTable" 
-            items="{/ParceirosSet}"
-            growing="true"
-            growingScrollToLoad="true">
-
+        <Table id="idTable" items="{/ParceirosSet}" growing="true" growingScrollToLoad="true" mode="SingleSelectLeft">
             <headerToolbar>
                 <OverflowToolbar>
                     <Title text="{i18n>title}"></Title>
+                    <ToolbarSpacer />
+                    <Button text="Criar Parceiro" type="Emphasized" press="onButtonCriarParceiro"/>
+                    <Button text="Deletar Parceiro" type="Negative" press="onButtonDeletarParceiro"/>
                 </OverflowToolbar>
             </headerToolbar>
 
